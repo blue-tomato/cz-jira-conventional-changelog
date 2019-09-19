@@ -1,5 +1,37 @@
 {
-  "name": "root",
-  "private": true,
-  "scripts": { }
+  "name": "@blue-tomato/cz-jira-conventional-changelog",
+  "version": "1.0.0",
+  "description": "📯 Commitizen adapter by Blue Tomato",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blue-tomato/cz-jira-conventional-changelog.git"
+  },
+  "keywords": [
+    "commitizen",
+    "adapter",
+    "blue-tomato"
+  ],
+  "author": "developer@blue-tomato.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blue-tomato/cz-jira-conventional-changelog/issues"
+  },
+  "homepage": "https://github.com/blue-tomato/cz-jira-conventional-changelog#readme",
+  "scripts": {
+    "start": "git-cz",
+    "prettier": "prettier '**/*.js' --write"
+  },
+  "dependencies": {
+    "conventional-commit-types": "^2.1.1"
+  },
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "prettier": "^1.18.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./."
+    }
+  }
 }
