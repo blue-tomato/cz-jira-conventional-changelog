@@ -1,7 +1,7 @@
 {
   "name": "@blue-tomato/cz-jira-conventional-changelog",
   "version": "1.0.0",
-  "description": "📯 Commitizen adapter by Blue Tomato",
+  "description": "📯 Commitizen adapter by Blue Tomato.",
   "main": "index.js",
   "repository": {
     "type": "git",
