@@ -77,12 +77,14 @@ module.exports = {
         type: 'confirm',
         name: 'commit',
         message: answers =>
-          ` Commit this? ${chalk.cyan(formatCommit(answers))}`,
+          ` Commit with this message? ${chalk.cyan(formatCommit(answers))}`,
         default: true
       }
     ]).then(answers => {
       if (answers.commit) {
         commit(formatCommit(answers));
+      } else {
+        console.log(chalk.red('Aborted ...'));
       }
     });
   }
