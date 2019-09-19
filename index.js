@@ -1,4 +1,5 @@
 const types = require('conventional-commit-types');
+const chalk = require('chalk');
 
 const getLongInput = ({ required = false, maxLength = 80 }) => ({
   validate: value => {
@@ -13,6 +14,11 @@ const getLongInput = ({ required = false, maxLength = 80 }) => ({
   transformer: value => '(' + value.trim().length + ') ' + value,
   filter: value => value.trim()
 });
+
+const formatCommit = ({ issue, type, scope, subject }) =>
+  `${issue ? issue : '(NOTASK)'} ${type}${
+    scope.length >= 1 ? `(${scope})` : ''
+  }: ${subject}`;
 
 module.exports = {
   prompter: (cz, commit) => {
@@ -66,13 +72,18 @@ module.exports = {
         name: 'subject',
         message: 'Write a short, imperative tense description of the change:\n',
         default: undefined
+      },
+      {
+        type: 'confirm',
+        name: 'commit',
+        message: answers =>
+          ` Commit this? ${chalk.cyan(formatCommit(answers))}`,
+        default: true
       }
-    ]).then(({ issue, type, scope, subject }) =>
-      commit(
-        `${issue ? issue : '(NOTASK)'} ${type}${
-          scope.length >= 1 ? `(${scope})` : ''
-        }: ${subject}`
-      )
-    );
+    ]).then(answers => {
+      if (answers.commit) {
+        commit(formatCommit(answers));
+      }
+    });
   }
 };
