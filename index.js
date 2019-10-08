@@ -15,6 +15,19 @@ const getLongInput = ({ required = false, maxLength = 80 }) => ({
   filter: value => value.trim()
 });
 
+const longest = array =>
+  array.reduce(
+    (acc, current) => (current.length > acc ? current.length : acc),
+    0
+  );
+
+const keys = Object.keys(types.types);
+
+const choices = keys.map(key => ({
+  name: (key + ':').padEnd(longest(keys) + 2) + types.types[key].description,
+  value: key
+}));
+
 const formatCommit = ({ issue, type, scope, subject }) =>
   `${issue ? issue : '(NOTASK)'} ${type}${
     scope.length >= 1 ? `(${scope})` : ''
@@ -47,8 +60,8 @@ module.exports = {
         type: 'list',
         name: 'type',
         message: "Select the type of change that you're committing:",
-        choices: Object.keys(types.types),
-        default: Object.keys(types.types)[0]
+        choices,
+        default: choices[0]
       },
       {
         ...getLongInput({
