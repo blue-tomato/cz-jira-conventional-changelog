@@ -1,5 +1,6 @@
 const types = require('conventional-commit-types');
 const chalk = require('chalk');
+const branch = require('git-branch');
 
 const getLongInput = ({ required = false, maxLength = 80 }) => ({
   validate: value => {
@@ -34,7 +35,10 @@ const formatCommit = ({ issue, type, scope, subject }) =>
   }: ${subject}`;
 
 module.exports = {
-  prompter: (cz, commit) => {
+  prompter: (cz, commit, ...args) => {
+    const match = branch.sync().match(/[A-Z]+-[0-9]+/);
+    const issueId = match && match[0];
+
     cz.prompt([
       {
         type: 'confirm',
@@ -51,7 +55,7 @@ module.exports = {
         name: 'issue',
         message: 'Issue reference:',
         when: answers => answers.isIssueAffected,
-        default: undefined,
+        default: issueId,
         transformer: value =>
           '(' + value.trim().length + ') ' + value.toUpperCase(),
         filter: value => value.trim().toUpperCase()
