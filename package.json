@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "chalk": "^2.4.2",
-    "conventional-commit-types": "^2.3.0"
+    "conventional-commit-types": "^2.3.0",
+    "git-branch": "^2.0.1"
   },
   "devDependencies": {
     "commitizen": "^4.0.3",
