@@ -1,0 +1,50 @@
+{
+  "feat": {
+    "description": "A new feature",
+    "title": "✨ feat"
+  },
+  "fix": {
+    "description": "A bug fix",
+    "title": "🐛 fix"
+  },
+  "improvement": {
+    "description": "An improvement to a current feature",
+    "title": "💪 improvement"
+  },
+  "docs": {
+    "description": "Documentation only changes",
+    "title": "📖 docs"
+  },
+  "style": {
+    "description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
+    "title": "💎 style"
+  },
+  "refactor": {
+    "description": "A code change that neither fixes a bug nor adds a feature",
+    "title": "📦 refactor"
+  },
+  "perf": {
+    "description": "A code change that improves performance",
+    "title": "🚀 perf"
+  },
+  "test": {
+    "description": "Adding missing tests or correcting existing tests",
+    "title": "🚨 test"
+  },
+  "build": {
+    "description": "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
+    "title": "👷 build"
+  },
+  "ci": {
+    "description": "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
+    "title": "💻 ci"
+  },
+  "chore": {
+    "description": "Other changes that don't modify src or test files",
+    "title": "🎫 chore"
+  },
+  "revert": {
+    "description": "Reverts a previous commit",
+    "title": "🔙 revert"
+  }
+}
