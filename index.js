@@ -1,6 +1,6 @@
-const types = require('conventional-commit-types');
 const chalk = require('chalk');
 const branch = require('git-branch');
+const types = require('./types');
 
 const getLongInput = ({ required = false, maxLength = 80 }) => ({
   validate: value => {
@@ -22,11 +22,13 @@ const longest = array =>
     0
   );
 
-const keys = Object.keys(types.types);
-
+const keys = Object.keys(types);
 const choices = keys.map(key => ({
-  name: (key + ':').padEnd(longest(keys) + 2) + types.types[key].description,
-  value: key
+  name:
+    (types[key].title + ':').padEnd(
+      longest(keys.map(key => types[key].title)) + 2
+    ) + types[key].description,
+  value: types[key].title
 }));
 
 const formatCommit = ({ issue, type, scope, subject }) =>
